@@ -2,10 +2,11 @@
 session_start();
 /* DECLARE VARIABLES */
 $username = 'user';
-$password = 'admin';
+$salt = 'mysalt';
+$stored_hash = 'c88abcb316f451bca4908fabd0d4baa6f2a032eecca64188d6142e3a44e6a445';
 $random1 = 'secret_key1';
 $random2 = 'secret_key2';
-$hash = md5($random1 . $password . $random2);
+$hash = md5($random1 . $stored_hash . $random2);
 $self = $_SERVER['REQUEST_URI'];
 /* USER LOGOUT */
 if(isset($_GET['logout']))
@@ -20,12 +21,16 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == $hash)
 /* FORM HAS BEEN SUBMITTED */
 else if (isset($_POST['submit']))
 {
-	if ($_POST['username'] == $username && $_POST['password'] == $password)
-	{
-		//IF USERNAME AND PASSWORD ARE CORRECT SET THE LOGIN SESSION
-		$_SESSION["login"] = $hash;
-		header("Location: $_SERVER[PHP_SELF]");
-	}
+        if (
+            isset($_POST['username'], $_POST['password']) &&
+            $_POST['username'] === $username &&
+            hash('sha256', $_POST['password'] . $salt) === $stored_hash
+        )
+        {
+                //IF USERNAME AND PASSWORD ARE CORRECT SET THE LOGIN SESSION
+                $_SESSION["login"] = $hash;
+                header("Location: $_SERVER[PHP_SELF]");
+        }
 	else
 	{
 		// DISPLAY FORM WITH ERROR

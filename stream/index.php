@@ -5,11 +5,17 @@
 		if (isset($_GET['data'])) 
 		{
 			if(!empty($_GET['data']))
-			{
-				$data = trim(decode($_GET['data']));
-				header('Location:' . $data);
-			} else echo 'Error Empty!';
-		} else echo 'Error Isset!';
+                        {
+                                $data = trim(decode($_GET['data']));
+                                $allowedHost = $_SERVER['SERVER_NAME'];
+                                $parsed = parse_url($data);
+                                if (isset($parsed['host']) && $parsed['host'] === $allowedHost) {
+                                        header('Location:' . $data);
+                                } else {
+                                        echo 'Invalid redirect URL';
+                                }
+                        } else echo 'Error Empty!';
+                } else echo 'Error Isset!';
 	}
 	else echo '<!DOCTYPE html>
 <html>
