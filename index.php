@@ -75,7 +75,7 @@ function display_login_form()
 	  			</div>
 	  			<div class="row-fluid">
 	  				<div class="col-sm-12">
-	<?php echo '<form action="' . isset($self) . '" method="post">' .
+        <?php echo '<form action="' . htmlspecialchars($self, ENT_QUOTES, 'UTF-8') . '" method="post">' .
 			 '<label for="username">username:</label>' .
 			 '<input type="text" name="username" id="username">' .
 			 '<label for="password">password:</label>' .
@@ -102,10 +102,12 @@ function logged_in_msg($username)
 	<title>Panel MP4</title>
 	<link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/ITunes_12.2_logo.png/600px-ITunes_12.2_logo.png" type="image/x-icon" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css" type="text/css" />
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+        <link rel="preconnect" href="https://ajax.googleapis.com">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-	<script type="text/javascript" src="assets/js/apicodes.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js" defer></script>
+	<script src="assets/js/apicodes.min.js" defer></script>
 </head>
 <body>
 	<div class="container">
@@ -113,7 +115,7 @@ function logged_in_msg($username)
 		    <a class="btn btn-info btn-sm" href="?logout=true" role="button">Cerrar Sesion</a>
 			<div class="form-group">
 				<label class="font-weight-bold">LINK MP4:</label>
-				<input type="text" name="link" class="form-control" placeholder="Ex: https://xxxx.com/0p01.mp4"this.select()" required>
+                                <input type="text" name="link" class="form-control" placeholder="Ex: https://xxxx.com/0p01.mp4" onclick="this.select()" required>
 			</div>
 
 			<div class="row">
@@ -183,7 +185,7 @@ function logged_in_msg($username)
 						},
 						success: function (result) {
 							$('#url-encode').val('<?php echo $domainServer . '/embed.php?data=' ?>'+result+'');
-							$('#iframe-encode').html('<iframe src="<?php echo $domainServer . '/embed.php?data=' ?>'+result+'" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>');
+							$('#iframe-encode').html('<iframe src="<?php echo $domainServer . '/embed.php?data=' ?>'+result+'" width="100%" height="100%" frameborder="0" allowfullscreen loading="lazy"></iframe>');
 							$('#fa-loading').html('<i class="fa fa-arrow-circle-right"></i>');
 							$('#action-submit').removeAttr('disabled');
 						}

@@ -17,14 +17,17 @@
     </script>
 	<meta name="robots" content="noindex">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://ssl.p.jwpcdn.com/player/v/8.13.0/jwplayer.js"></script>
-	<script src="assets/promise-polyfill.js"></script>
-	<script src="https://cablegratishd.online/js/search.js"></script>
-    <script src="assets/devtools-detector.js"></script>
-	<script src="assets/ua-parser.min.js"></script>
+        <link rel="preconnect" href="https://ajax.googleapis.com">
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+        <link rel="preconnect" href="https://ssl.p.jwpcdn.com">
+        <link rel="preconnect" href="https://cablegratishd.online">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js" defer></script>
+        <script type="text/javascript" src="https://ssl.p.jwpcdn.com/player/v/8.13.0/jwplayer.js" defer></script>
+        <script src="assets/promise-polyfill.js" defer></script>
+        <script src="https://cablegratishd.online/js/search.js" defer></script>
+    <script src="assets/devtools-detector.js" defer></script>
+        <script src="assets/ua-parser.min.js" defer></script>
 	<link href="https://bundlecode.com/demo/mp4/netflix.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript">jwplayer.key="64HPbvSQorQcd52B8XFuhMtEoitbvY/EXJmMBfKcXZQU2Rnn";</script>
 	<style type="text/css" media="screen">html,body{padding:0;margin:0;height:100%}#apicodes-player{width:100%!important;height:100%!important;overflow:hidden;background-color:#000}</style>
@@ -58,7 +61,6 @@ return false;
 }
 }
 </script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>
 document.onkeydown = function(e) {
         if (e.ctrlKey && 
